@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"runtime/debug"
 	"strings"
+	"log"
 )
 
 type Image struct {
@@ -207,7 +208,7 @@ func EntryFromJSON(raw []byte) (entry Entry, err error) {
 	if err := json.Unmarshal(raw, &jd); err != nil {
 		return entry, err
 	}
-
+	log.Printf("jd: %+v", fmt.Sprintf("%+v", jd))
 	if len(jd) < 7 {
 		return entry, fmt.Errorf("invalid json")
 	}
